@@ -19,7 +19,7 @@ ASP.NET Core MVC web app for the C# course project: tasks with status, priority,
 
 ## Object-oriented design
 
-- **Entities:** `TaskItem`, `TaskStatus`, `TaskPriority`.
+- **Entities:** `TaskItem`, `TaskItemStatus`, `TaskPriority`.
 - **Data access:** `AppDbContext` (EF Core).
 - **Services:** `ITaskService` / `TaskService` (CRUD + reporting), `INotificationBroadcaster` / `NotificationBroadcaster` (SignalR).
 - **Hosted service:** `DeadlineNotificationBackgroundService` scans for upcoming/overdue tasks and broadcasts notifications.
