@@ -17,7 +17,7 @@ public static class SeedData
             {
                 Title = "Review course requirements",
                 Description = "Confirm rubric items for the C# project.",
-                Status = TaskStatus.Done,
+                Status = TaskItemStatus.Done,
                 Priority = TaskPriority.Normal,
                 DueDate = now.AddDays(-2),
                 CreatedAt = now.AddDays(-10),
@@ -26,7 +26,7 @@ public static class SeedData
             new TaskItem
             {
                 Title = "Implement CRUD and validation",
-                Status = TaskStatus.InProgress,
+                Status = TaskItemStatus.InProgress,
                 Priority = TaskPriority.High,
                 DueDate = now.AddDays(3),
                 CreatedAt = now.AddDays(-5),
@@ -35,7 +35,7 @@ public static class SeedData
             new TaskItem
             {
                 Title = "Add SignalR notifications",
-                Status = TaskStatus.Todo,
+                Status = TaskItemStatus.Todo,
                 Priority = TaskPriority.Urgent,
                 DueDate = now.AddHours(20),
                 CreatedAt = now.AddDays(-1),
@@ -44,7 +44,7 @@ public static class SeedData
             new TaskItem
             {
                 Title = "Write README and push to GitHub",
-                Status = TaskStatus.Todo,
+                Status = TaskItemStatus.Todo,
                 Priority = TaskPriority.Low,
                 DueDate = now.AddDays(7),
                 CreatedAt = now,
