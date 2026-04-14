@@ -13,7 +13,7 @@ public class TaskItem
     [StringLength(4000)]
     public string? Description { get; set; }
 
-    public TaskStatus Status { get; set; } = TaskStatus.Todo;
+    public TaskItemStatus Status { get; set; } = TaskItemStatus.Todo;
 
     public TaskPriority Priority { get; set; } = TaskPriority.Normal;
 
