@@ -17,7 +17,7 @@ public class TaskItemInputModel
 
     [Required]
     [Display(Name = "Status")]
-    public TaskStatus Status { get; set; } = TaskStatus.Todo;
+    public TaskItemStatus Status { get; set; } = TaskItemStatus.Todo;
 
     [Required]
     [Display(Name = "Priority")]
