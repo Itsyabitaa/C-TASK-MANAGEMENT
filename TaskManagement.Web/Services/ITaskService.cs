@@ -34,6 +34,6 @@ public sealed class ReportSummary
 
 public sealed class StatusCountRow
 {
-    public TaskStatus Status { get; init; }
+    public TaskItemStatus Status { get; init; }
     public int Count { get; init; }
 }
