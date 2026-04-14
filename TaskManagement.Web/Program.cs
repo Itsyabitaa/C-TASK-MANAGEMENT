@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using TaskManagement.Web.Data;
 using TaskManagement.Web.Hubs;
