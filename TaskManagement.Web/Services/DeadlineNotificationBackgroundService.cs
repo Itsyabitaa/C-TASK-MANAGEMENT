@@ -60,8 +60,8 @@ public class DeadlineNotificationBackgroundService : BackgroundService
         var pending = await db.TaskItems
             .Where(t =>
                 t.DueDate.HasValue
-                && t.Status != TaskStatus.Done
-                && t.Status != TaskStatus.Cancelled
+                && t.Status != TaskItemStatus.Done
+                && t.Status != TaskItemStatus.Cancelled
                 && t.DueDate > now
                 && t.DueDate <= horizon)
             .ToListAsync(cancellationToken);
@@ -84,8 +84,8 @@ public class DeadlineNotificationBackgroundService : BackgroundService
             .Where(t =>
                 t.DueDate.HasValue
                 && t.DueDate < now
-                && t.Status != TaskStatus.Done
-                && t.Status != TaskStatus.Cancelled)
+                && t.Status != TaskItemStatus.Done
+                && t.Status != TaskItemStatus.Cancelled)
             .ToListAsync(cancellationToken);
 
         foreach (var task in overdue)
