@@ -112,21 +112,21 @@ public class TaskService : ITaskService
 
         var overdue = items.Count(t =>
             t.DueDate.HasValue
-            && t.Status is not (TaskStatus.Done or TaskStatus.Cancelled)
+            && t.Status is not (TaskItemStatus.Done or TaskItemStatus.Cancelled)
             && t.DueDate.Value < now.UtcDateTime);
 
         var dueThisWeek = items.Count(t =>
             t.DueDate.HasValue
-            && t.Status is not (TaskStatus.Done or TaskStatus.Cancelled)
+            && t.Status is not (TaskItemStatus.Done or TaskItemStatus.Cancelled)
             && t.DueDate.Value >= startOfWeek
             && t.DueDate.Value < endOfWeek);
 
         return new DashboardStats
         {
             Total = items.Count,
-            Todo = items.Count(t => t.Status == TaskStatus.Todo),
-            InProgress = items.Count(t => t.Status == TaskStatus.InProgress),
-            Done = items.Count(t => t.Status == TaskStatus.Done),
+            Todo = items.Count(t => t.Status == TaskItemStatus.Todo),
+            InProgress = items.Count(t => t.Status == TaskItemStatus.InProgress),
+            Done = items.Count(t => t.Status == TaskItemStatus.Done),
             Overdue = overdue,
             DueThisWeek = dueThisWeek
         };
@@ -140,14 +140,14 @@ public class TaskService : ITaskService
 
         var items = await _db.TaskItems.AsNoTracking().ToListAsync(cancellationToken);
 
-        var counts = Enum.GetValues<TaskStatus>()
+        var counts = Enum.GetValues<TaskItemStatus>()
             .Select(s => new StatusCountRow { Status = s, Count = items.Count(t => t.Status == s) })
             .ToList();
 
         var overdueTasks = items
             .Where(t =>
                 t.DueDate.HasValue
-                && t.Status is not (TaskStatus.Done or TaskStatus.Cancelled)
+                && t.Status is not (TaskItemStatus.Done or TaskItemStatus.Cancelled)
                 && t.DueDate.Value < now.UtcDateTime)
             .OrderBy(t => t.DueDate)
             .ThenBy(t => t.Title)
@@ -156,7 +156,7 @@ public class TaskService : ITaskService
         var dueWeek = items
             .Where(t =>
                 t.DueDate.HasValue
-                && t.Status is not (TaskStatus.Done or TaskStatus.Cancelled)
+                && t.Status is not (TaskItemStatus.Done or TaskItemStatus.Cancelled)
                 && t.DueDate.Value >= startOfWeek
                 && t.DueDate.Value < endOfWeek)
             .OrderBy(t => t.DueDate)
