@@ -18,7 +18,7 @@ public class TasksController : Controller
 
     [HttpGet]
     public async Task<IActionResult> Index(
-        [FromQuery] TaskStatus? status,
+        [FromQuery] TaskItemStatus? status,
         CancellationToken cancellationToken)
     {
         var all = await _tasks.GetAllAsync(cancellationToken);
